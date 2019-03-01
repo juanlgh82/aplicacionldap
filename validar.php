@@ -1,0 +1,13 @@
+<?php
+session_start();
+include('include/database.php');
+$user=$_POST['user']??"";
+$pass=$_POST['password']??"";
+if(loginUser($user,$pass)):
+  $_SESSION['user']=$user;
+  $_SESSION['login']=true;
+  header('Location:admin.php');
+else:
+  header('Location:login.php?error=true');
+endif;
+?>
